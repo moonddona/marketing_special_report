@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growth Marketing Forward 2025</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f0ede6;
+      --white: #ffffff;
+      --ink: #1c1c1c;
+      --muted: #888078;
+      --accent: #c8401a;
+      --rule: #e0dbd0;
+      --card-shadow: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+
+      /* 폰트 사이즈 통일 */
+      --fs-xs: 11px;
+      --fs-sm: 13px;
+      --fs-base: 15px;
+      --fs-md: 17px;
+      --fs-lg: 22px;
+      --fs-xl: 28px;
+      --fs-2xl: 38px;
+    }
+
+    html, body {
+      min-height: 100%;
+      height: 100%;
+      background: var(--bg);
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--fs-base);
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 48px;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .topbar-label {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .topbar-title {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* CARD STACK */
+    .card-stack {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+    }
+    .card-stack::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      height: 100%;
+      top: 10px;
+      border-radius: 20px;
+      background: var(--white);
+      opacity: 0.45;
+      z-index: 0;
+    }
+    .card-stack::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 56px);
+      height: 100%;
+      top: 20px;
+      border-radius: 20px;
+      background: var(--white);
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    /* CARD */
+    .card-stack-inner {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+    .card {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transform: translateX(100%);
+      transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .card.active {
+      position: relative;
+      transform: translateX(0);
+      z-index: 2;
+    }
+    .card.slide-out-left {
+      position: absolute;
+      transform: translateX(-100%);
+      z-index: 1;
+    }
+    .card.slide-out-right {
+      position: absolute;
+      transform: translateX(100%);
+      z-index: 1;
+    }
+    .card.slide-in-left {
+      transform: translateX(-100%);
+    }
+    .card.slide-in-right {
+      transform: translateX(100%);
+    }
+
+    .card-header {
+      padding: 28px 32px 20px;
+      border-bottom: none;
+    }
+    .card-header-rule {
+      height: 1px;
+      background: var(--rule);
+      margin: 0 32px;
+    }
+    .card-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .card-num {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+    }
+    .card-tag {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .card-title {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xl);
+      font-weight: 800;
+      line-height: 1.3;
+      color: var(--ink);
+      letter-spacing: -0.5px;
+    }
+    .card-title em { color: var(--accent); font-style: normal; font-weight: 800; }
+    .card-deck {
+      margin-top: 8px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      color: var(--muted);
+    }
+
+    .card-body { padding: 0 32px 32px; }
+
+    .lead {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-base);
+      line-height: 1.85;
+      color: #3a3530;
+      padding: 22px 0 18px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 22px;
+    }
+    .lead strong {
+      color: var(--ink);
+      font-weight: 700;
+      background: linear-gradient(180deg, transparent 65%, rgba(200,64,26,0.12) 65%);
+    }
+
+    .section { margin-bottom: 20px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .section-num {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-base);
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .section-body {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      line-height: 1.85;
+      color: #4a4540;
+    }
+
+    .item-list { margin-top: 10px; }
+    .item {
+      padding: 12px 0;
+      border-top: 1px solid var(--rule);
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      line-height: 1.75;
+      color: #4a4540;
+    }
+    .item:last-child { border-bottom: 1px solid var(--rule); }
+    .item strong { color: var(--ink); font-weight: 600; }
+    .item-sub {
+      margin-top: 5px;
+      padding-left: 12px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      border-left: 2px solid var(--rule);
+    }
+
+    .callout {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 20px 0;
+    }
+    .callout p {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-base);
+      font-weight: 500;
+      line-height: 1.8;
+      color: #f0ede6;
+    }
+
+    .summary-text {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      line-height: 1.8;
+      color: #4a4540;
+      margin-bottom: 16px;
+      padding-top: 20px;
+    }
+    .summary-text strong { color: var(--ink); }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .compare-table thead tr { background: var(--ink); }
+    .compare-table thead th {
+      padding: 12px 14px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-align: left;
+      color: rgba(240,237,230,0.7);
+    }
+    .compare-table thead th:last-child { color: #e8a080; }
+    .compare-table tbody tr { border-bottom: 1px solid var(--rule); }
+    .compare-table tbody tr:last-child { border-bottom: none; }
+    .compare-table tbody td { padding: 13px 14px; vertical-align: top; }
+    .compare-table tbody td:first-child { color: var(--muted); }
+    .compare-table tbody td:last-child { font-weight: 600; color: var(--ink); }
+
+    .closing-text {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      line-height: 1.9;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* COVER */
+    .cover-card .card-body { padding: 0; }
+    .cover-inner { padding: 36px 32px 32px; text-align: center; }
+    .cover-tag {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .cover-title {
+      font-family: 'Pretendard', sans-serif;
+      font-size: clamp(32px, 10vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+    }
+    .cover-title span { color: var(--ink); }
+    .cover-subtitle {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 10px 0 28px;
+    }
+    .cover-note {
+      background: #f7f4ef;
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .cover-note-label {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .cover-note p {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-sm);
+      line-height: 1.85;
+      color: var(--muted);
+    }
+    .cover-note p strong { color: var(--ink); }
+    .cover-contents { text-align: left; border-top: 1px solid var(--rule); padding-top: 22px; }
+    .cover-contents-label {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .contents-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .contents-item:last-child { border-bottom: none; }
+    .contents-item:hover { opacity: 0.7; }
+    .contents-num {
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-md);
+      font-weight: 800;
+      color: var(--rule);
+      line-height: 1;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .contents-title { font-family: 'Pretendard', sans-serif; font-size: var(--fs-sm); font-weight: 600; color: var(--ink); line-height: 1.4; }
+    .contents-sub { font-family: 'Pretendard', sans-serif; font-size: 12px; color: var(--muted); margin-top: 3px; }
+    .contents-arrow { margin-left: auto; color: var(--muted); font-size: var(--fs-base); padding-top: 2px; flex-shrink: 0; }
+
+    /* NAV */
+    .nav {
+      width: 100%;
+      max-width: 480px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rule);
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--ink);
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      user-select: none;
+    }
+    .nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .nav-btn:disabled { opacity: 0.25; cursor: default; }
+
+    .nav-dots { display: flex; gap: 7px; align-items: center; }
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--rule);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .dot.active { background: var(--accent); width: 22px; border-radius: 4px; }
+
+    .progress-bar {
+      width: 100%;
+      max-width: 480px;
+      height: 2px;
+      background: var(--rule);
+      border-radius: 2px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.35s ease;
+    }
+
+    .swipe-hint {
+      margin-top: 12px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: var(--fs-xs);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      transition: opacity 0.4s;
+    }
+
+    @media (max-width: 400px) {
+      .card-header, .card-body { padding-left: 20px; padding-right: 20px; }
+      .cover-inner { padding: 28px 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 스와이프 안내 오버레이 -->
+<div id="swipeOverlay" style="
+  position:fixed;inset:0;z-index:999;
+  background:rgba(20,18,16,0.75);
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+">
+  <!-- 손 아이콘 + 화살표 애니메이션 -->
+  <div style="position:relative;width:160px;height:80px;margin-bottom:28px;">
+    <div style="position:absolute;top:50%;left:0;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,0.6);animation:fadeArrow 1.6s ease-in-out infinite;">←</div>
+    <div style="position:absolute;top:50%;right:0;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,0.6);animation:fadeArrow 1.6s ease-in-out infinite 0.8s;">→</div>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:44px;animation:swipeHand 1.6s ease-in-out infinite;">👆</div>
+  </div>
+
+  <div style="font-family:'Pretendard',sans-serif;text-align:center;color:#fff;">
+    <div style="font-size:20px;font-weight:700;line-height:1.5;margin-bottom:8px;">좌우로 밀어</div>
+    <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:36px;">리포트를 읽으실 수 있어요</div>
+    <button onclick="document.getElementById('swipeOverlay').style.display='none'" style="
+      padding:14px 40px;
+      background:rgba(255,255,255,0.15);
+      border:1.5px solid rgba(255,255,255,0.35);
+      border-radius:100px;
+      color:#fff;font-size:15px;font-weight:600;
+      font-family:'Pretendard',sans-serif;
+      cursor:pointer;
+      backdrop-filter:blur(4px);
+    ">알겠어요!</button>
+  </div>
+</div>
+
+<style>
+@keyframes fadeArrow {
+  0%,100%{opacity:0.2} 50%{opacity:1}
+}
+@keyframes swipeHand {
+  0%,100%{transform:translate(-50%,-50%) translateX(0)} 40%{transform:translate(-50%,-50%) translateX(14px)} 60%{transform:translate(-50%,-50%) translateX(-14px)}
+}
+</style>
+
+<div class="app">
+
+  <div class="card-stack" id="cardStack">
+    <div class="card-stack-inner" id="cardInner">
+    <div class="card cover-card active" data-index="0">
+      <div class="cover-inner">
+        <div class="cover-tag">📘 Special Report</div>
+        <div style="margin-bottom:6px;">
+          <div style="font-size:13px;font-weight:600;color:var(--muted);letter-spacing:3px;text-transform:uppercase;text-align:center;margin-bottom:10px;">Martinee</div>
+          <div class="cover-title"><span style="background:linear-gradient(to bottom, transparent 50%, rgba(200,64,26,0.15) 50%);">Growth<br>Marketing<br>Forward 2026</span></div>
+        </div>
+        <div class="cover-subtitle">UX Insight Team</div>
+        <div class="cover-note">
+          <p style="font-size:13px;color:#5a524a;line-height:1.8;">마케팅 파트에서 지난 2월 24일 글로벌 마케팅 솔루션 시장 현황과 기술 흐름, 실무 운영 전략 등을 공유하는 마케팅 컨퍼런스에 다녀왔습니다. 특히 AI 관련 내용이 흥미로워 공유드리면 좋을 것 같아 리포트를 제작해보았습니다. 가볍게 읽어 주시면 감사하겠습니다.</p>
+        </div>
+        <div class="cover-contents">
+          <div class="cover-contents-label">Contents</div>
+          <div class="contents-item" onclick="goTo(1)">
+            <div class="contents-num">01</div>
+            <div>
+              <div class="contents-title">마켓컬리는 어떻게 우리의 '단골집'이 되었을까?</div>
+              <div class="contents-sub">데이터 속에 숨겨진 사람의 마음을 읽는 법</div>
+            </div>
+            <div class="contents-arrow">›</div>
+          </div>
+          <div class="contents-item" onclick="goTo(6)">
+            <div class="contents-num">02</div>
+            <div>
+              <div class="contents-title">AI 시대의 마케터는 '지휘자'가 되어야 한다</div>
+              <div class="contents-sub">기계가 못 하는 '진짜 질문'을 던지는 법</div>
+            </div>
+            <div class="contents-arrow">›</div>
+          </div>
+          <div class="contents-item" onclick="goTo(9)" style="border-bottom:none;">
+            <div class="contents-num">03</div>
+            <div>
+              <div class="contents-title">결국, 우리에게 필요한 것은</div>
+              <div class="contents-sub">데이터의 맥락을 읽는 오케스트레이터</div>
+            </div>
+            <div class="contents-arrow">›</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 1: Article 1 Intro -->
+    <div class="card" data-index="1">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">01</span></div>
+        <h2 class="card-title">마켓컬리는 어떻게<br>우리의 <em>'단골집'</em>이 되었을까?</h2>
+        <p class="card-deck">— 데이터 속에 숨겨진 사람의 마음을 읽는 법 —</p>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead">기존에 기업들은 광고비를 대거 투입해 신규 고객을 유입하는 방식에 집중합니다. 그러나 컬리는 이번에 다른 접근을 택했습니다. 컬리의 전략은 <strong>'비용의 효율적 재배치'</strong>입니다. 신규 유입(Entry)에 쏟던 에너지를 기존 고객의 유지(Lock-in)로 돌려 <strong>LTV(고객 생애 가치)를 극대화</strong>하는 것에 방점을 찍은 것입니다.</p>
+
+        <!-- 3가지 핵심 전략 아이콘 블록 -->
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+          <div style="display:flex;align-items:center;gap:14px;background:#f7f4ef;border-radius:12px;padding:14px 16px;">
+            <div style="font-size:22px;flex-shrink:0;">🔒</div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;">멤버십의 본질: 수익화가 아닌 '습관의 설계'</div>
+            </div>
+            <div style="margin-left:auto;color:var(--accent);font-size:13px;font-family:'Pretendard',sans-serif;">01</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:#f7f4ef;border-radius:12px;padding:14px 16px;">
+            <div style="font-size:22px;flex-shrink:0;">🎯</div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;">데이터 병합을 통한 입체적 해석</div>
+            </div>
+            <div style="margin-left:auto;color:var(--accent);font-size:13px;font-family:'Pretendard',sans-serif;">02</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:#f7f4ef;border-radius:12px;padding:14px 16px;">
+            <div style="font-size:22px;flex-shrink:0;">💬</div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;">제품 접점의 힘: Product Nudging</div>
+            </div>
+            <div style="margin-left:auto;color:var(--accent);font-size:13px;font-family:'Pretendard',sans-serif;">03</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2: Article 1 Section 2 - 멤버십 -->
+    <div class="card" data-index="2">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">01</span></div>
+        <h2 class="card-title">멤버십의 본질:<br>수익화가 아닌 '습관의 설계'</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead" style="margin-bottom:22px;">멤버십은 당장의 수익을 내는 상품이 아닙니다. 고객이 우리 서비스에 머물게 하는 <strong>강력한 결속 장치</strong>입니다. 컬리는 이를 Lock-in 전략의 핵심 도구로 활용했습니다.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;">
+          <div style="background:#f0ede6;border-radius:10px;padding:14px 12px;">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:8px;font-weight:600;">일반적 접근</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.7;">10,000원<br>할인 제공</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--rule);">혜택의 양</div>
+          </div>
+          <div style="background:var(--ink);border-radius:10px;padding:14px 12px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:8px;font-weight:600;">컬리의 접근</div>
+            <div style="font-size:13px;color:#f0ede6;line-height:1.7;font-weight:600;">필요한 순간<br>적절한 혜택</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1);">효능감의 극대화</div>
+          </div>
+        </div>
+
+        <p class="lead" style="padding-top:22px;padding-bottom:0;margin-bottom:0;border-bottom:none;">단순히 10,000원을 할인해 주는 것보다, 고객이 필요한 순간에 적절한 혜택을 경험하게 하여 <strong>"이 서비스 참 유용하다"</strong>는 효능감을 극대화하는 것이 핵심입니다.</p>
+      </div>
+    </div>
+
+    <!-- CARD 3: Article 1 Section 2 - 데이터 재해석 -->
+    <div class="card" data-index="3">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">01</span></div>
+        <h2 class="card-title">데이터 병합을 통한<br>입체적 해석</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead">데이터는 맥락과 함께 해석되어야 합니다. 클릭 수·전환율 같은 단일 지표가 아니라, <strong>여러 데이터를 병합해 입체적으로 해석</strong>할 때 진짜 인사이트가 나오며, 이러한 인사이트를 기반으로 상품 차별화가 강화될수록 락인 효과도 함께 상승합니다.</p>
+
+        <!-- 데이터 레이어 도식 -->
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+          <!-- 세 항목 가로 배열 -->
+          <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:6px;align-items:center;">
+            <div style="background:#f0ede6;border-radius:10px;padding:14px 10px;text-align:center;">
+              <div style="font-size:18px;margin-bottom:6px;">📊</div>
+              <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">Behavior Data</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.4;">유저의<br>행동 변화</div>
+            </div>
+            <div style="font-size:15px;color:var(--muted);text-align:center;">+</div>
+            <div style="background:#f0ede6;border-radius:10px;padding:14px 10px;text-align:center;">
+              <div style="font-size:18px;margin-bottom:6px;">🌐</div>
+              <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">Situational Data</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.4;">상황에 따른<br>맥락 해석</div>
+            </div>
+            <div style="font-size:15px;color:var(--muted);text-align:center;">+</div>
+            <div style="background:#f0ede6;border-radius:10px;padding:14px 10px;text-align:center;">
+              <div style="font-size:18px;margin-bottom:6px;">🧪</div>
+              <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">User<br>Test</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.4;">사용자<br>피드백 수집</div>
+            </div>
+          </div>
+
+          <!-- = -->
+          <div style="text-align:center;font-size:18px;color:var(--accent);font-weight:700;line-height:1;">=</div>
+
+          <!-- Insight -->
+          <div style="background:var(--ink);border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:13px;font-weight:700;color:#f0ede6;">Insight</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4: Article 1 Section 3 + Summary -->
+    <div class="card" data-index="4">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">01</span></div>
+        <h2 class="card-title">제품 접점의 힘:<br>Product Nudging</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead">광고보다 강력한 것은 <strong>제품 내에서의 경험</strong>입니다. 구매를 지연시키는 퍼널 구간을 발견하고, 망설임의 순간에 실시간 트리거로 개인화 메시지를 발송합니다. 대형 캠페인 없이 넛징만으로도 전환 성과를 낼 수 있습니다.</p>
+
+        <!-- Nudging Flow 도식 -->
+        <div style="background:#f7f4ef;border-radius:12px;padding:16px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:14px;">Workflow</div>
+
+          <!-- Step 1 -->
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+            <div style="width:22px;height:22px;background:var(--muted);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+              <span style="font-size:10px;color:#fff;font-weight:700;">1</span>
+            </div>
+            <div style="background:#fff;border-radius:8px;padding:10px 12px;flex:1;border:1px solid var(--rule);">
+              <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">🛒 이탈 감지</div>
+              <div style="font-size:11px;color:var(--muted);">장바구니 담기 후 10분간 미결제 상태 유지</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;font-size:13px;color:var(--accent);margin-bottom:8px;">↓</div>
+
+          <!-- Step 2 -->
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;">
+            <div style="width:22px;height:22px;background:var(--muted);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+              <span style="font-size:10px;color:#fff;font-weight:700;">2</span>
+            </div>
+            <div style="background:#fff;border-radius:8px;padding:10px 12px;flex:1;border:1px solid var(--rule);">
+              <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">🎯 대상 식별</div>
+              <div style="font-size:11px;color:var(--muted);">구매 의도 있는 고객</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;font-size:13px;color:var(--accent);margin-bottom:8px;">↓</div>
+
+          <!-- Step 3 -->
+          <div style="display:flex;align-items:flex-start;gap:10px;">
+            <div style="width:22px;height:22px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+              <span style="font-size:10px;color:#fff;font-weight:700;">3</span>
+            </div>
+            <div style="background:var(--ink);border-radius:8px;padding:10px 12px;flex:1;">
+              <div style="font-size:12px;font-weight:700;color:#f0ede6;margin-bottom:6px;">💬 실시간 개인화 메시지 발송</div>
+              <div style="display:flex;flex-direction:column;gap:5px;">
+                <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:7px 10px;font-size:11px;color:rgba(255,255,255,0.7);line-height:1.5;">
+                  <span style="color:rgba(255,255,255,0.4);font-size:10px;display:block;margin-bottom:2px;">배송비 부담 고객</span>
+                  "지금 주문하시면 배송비 무료입니다!"
+                </div>
+                <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:7px 10px;font-size:11px;color:rgba(255,255,255,0.7);line-height:1.5;">
+                  <span style="color:rgba(255,255,255,0.4);font-size:10px;display:block;margin-bottom:2px;">가격 망설임 고객</span>
+                  "이 상품, 오늘만 5% 추가 할인 중이에요"
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- CARD 5-summary: Article 1 Summary -->
+    <div class="card" data-index="5">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">01</span></div>
+        <h2 class="card-title">💡 요약</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <div class="callout" style="margin-top:20px;margin-bottom:18px;">
+          <p>"데이터는 맥락과 함께 해석되어야 한다.<br>쏟아지는 데이터 속에서 얼마나 빠르게 인사이트를 뽑아내느냐가 경쟁력이다."</p>
+        </div>
+        <p class="summary-text">컬리가 증명한 것은 데이터의 양이 아닌 <strong>해석의 깊이</strong>가 성과를 만든다는 점입니다. <strong>Context-Driven</strong>으로의 전환이 핵심입니다.</p>
+
+        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--rule);">
+          <div style="display:grid;grid-template-columns:1fr 1fr;">
+            <div style="padding:10px 14px;background:#f0ede6;font-family:'Pretendard',sans-serif;font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;">기존 방식</div>
+            <div style="padding:10px 14px;background:var(--ink);font-family:'Pretendard',sans-serif;font-size:11px;letter-spacing:2px;color:rgba(255,255,255,0.5);text-transform:uppercase;">컬리의 방식</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);">
+            <div style="padding:12px 14px;font-size:13px;color:var(--muted);border-right:1px solid var(--rule);">전체 쿠폰 일괄 발송</div>
+            <div style="padding:12px 14px;font-size:13px;color:var(--ink);font-weight:600;">실시간 개인화 트리거</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);">
+            <div style="padding:12px 14px;font-size:13px;color:var(--muted);border-right:1px solid var(--rule);">클릭·전환율 단일 분석</div>
+            <div style="padding:12px 14px;font-size:13px;color:var(--ink);font-weight:600;">행동 뒤 맥락 해석</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);">
+            <div style="padding:12px 14px;font-size:13px;color:var(--muted);border-right:1px solid var(--rule);">신규 유입 광고비 집중</div>
+            <div style="padding:12px 14px;font-size:13px;color:var(--ink);font-weight:600;">기존 고객 Lock-in</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6: Article 2 Intro -->
+    <div class="card" data-index="6">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">02</span></div>
+        <h2 class="card-title">AI 시대의 마케터는<br><em>'지휘자'</em>가 되어야 한다</h2>
+        <p class="card-deck">— 기계가 못 하는 '진짜 질문'을 던지는 법 —</p>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead">과거 마케터의 역할이 데이터를 직접 추출·분석하는 <strong>'분석가'</strong>였다면, 이제는 AI를 활용해 전략적 방향을 설정하는 <strong>'오케스트레이터(지휘자)'</strong>로 전환이 요구됩니다.</p>
+
+        <!-- 역할 전환 도식 -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <div style="flex:1;background:#f0ede6;border-radius:10px;padding:14px 12px;text-align:center;">
+            <div style="font-size:22px;margin-bottom:6px;">🖩</div>
+            <div style="font-size:11px;font-family:'Pretendard',sans-serif;color:var(--muted);letter-spacing:1px;margin-bottom:4px;">BEFORE</div>
+            <div style="font-size:13px;font-weight:700;color:var(--muted);">분석가</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;">엑셀 직접 처리</div>
+          </div>
+          <div style="font-size:20px;color:var(--accent);flex-shrink:0;">→</div>
+          <div style="flex:1;background:var(--ink);border-radius:10px;padding:14px 12px;text-align:center;">
+            <div style="font-size:22px;margin-bottom:6px;">🎼</div>
+            <div style="font-size:11px;font-family:'Pretendard',sans-serif;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-bottom:4px;">NOW</div>
+            <div style="font-size:13px;font-weight:700;color:#f0ede6;">지휘자</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px;line-height:1.4;">AI에게 질문하고 해석</div>
+          </div>
+        </div>
+
+        <!-- AI가 잘하는 것 vs 사람이 해야 하는 것 -->
+        <div style="background:#fdf8f6;border-radius:10px;padding:14px 16px;">
+          <div style="display:flex;gap:16px;">
+            <div style="flex:1;">
+              <div style="font-size:11px;font-family:'Pretendard',sans-serif;color:var(--muted);letter-spacing:1px;margin-bottom:8px;">AI가 잘하는 것</div>
+              <div style="font-size:13px;color:var(--muted);line-height:1.6;">✓ 데이터 분석<br>✓ 패턴 인식<br>✓ 반복 실행</div>
+            </div>
+            <div style="width:1px;background:var(--rule);"></div>
+            <div style="flex:1;">
+              <div style="font-size:11px;font-family:'Pretendard',sans-serif;color:var(--accent);letter-spacing:1px;margin-bottom:8px;">사람이 해야 하는 것</div>
+              <div style="font-size:13px;color:var(--ink);font-weight:600;line-height:1.6;">✓ 문제 정의<br>✓ 맥락 해석<br>✓ 가설 수립</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6: Article 2 오케스트레이터 -->
+    <div class="card" data-index="7">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">02</span></div>
+        <h2 class="card-title">숫자는 AI가 보지만,<br>'맥락'은 사람이 본다</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead">AI는 숫자를 계산할 수 있지만, <strong>비즈니스의 맥락은 모릅니다.</strong> 데이터 너머의 맥락을 연결하고, 그것이 비즈니스에 어떤 영향을 주는지 해석하고 해결책을 설계하는 것은 마케터의 몫입니다. 마케터는 AI가 절대 알 수 없는 것을 연결하는 <strong>오케스트레이터</strong>가 되어야 합니다.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:#f0ede6;border-radius:10px;padding:14px 12px;">
+            <div style="font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:10px;font-weight:600;">🤖 AI가 할 수 있는 것</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:12px;color:var(--muted);padding:6px 10px;background:#fff;border-radius:6px;border:1px solid var(--rule);">대량 데이터 분석</div>
+              <div style="font-size:12px;color:var(--muted);padding:6px 10px;background:#fff;border-radius:6px;border:1px solid var(--rule);">패턴 인식 · 예측</div>
+              <div style="font-size:12px;color:var(--muted);padding:6px 10px;background:#fff;border-radius:6px;border:1px solid var(--rule);">반복 작업 자동화</div>
+            </div>
+          </div>
+          <div style="background:var(--ink);border-radius:10px;padding:14px 12px;">
+            <div style="font-size:11px;letter-spacing:1px;color:rgba(255,255,255,0.45);margin-bottom:10px;font-weight:600;">🙋🏻‍♀️ 마케터가 해야 할 것</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:12px;color:#f0ede6;padding:6px 10px;background:rgba(255,255,255,0.08);border-radius:6px;font-weight:600;">비즈니스 맥락 연결</div>
+              <div style="font-size:12px;color:#f0ede6;padding:6px 10px;background:rgba(255,255,255,0.08);border-radius:6px;font-weight:600;">결과 해석 · 가설 수립</div>
+              <div style="font-size:12px;color:#f0ede6;padding:6px 10px;background:rgba(255,255,255,0.08);border-radius:6px;font-weight:600;">해결책 설계 · 실행</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 7: Article 2 Section 2+3 -->
+    <!-- CARD 8: Article 2 Summary -->
+    <div class="card" data-index="8">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">02</span></div>
+        <h2 class="card-title">AI에게 제대로<br>질문하는 법</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead">AI를 잘 쓰기 위해서는 도구보다 <strong>준비가 먼저</strong>입니다. AI 활용의 핵심은 '질문의 구조'이며, 좋은 질문은 좋은 데이터 설계와 끊임없는 "왜?"에서 시작합니다. AI에게 단순히 <strong>"매출 올려줘"</strong>라고 묻는 것은 의미가 없습니다. 질문이 명확할 때 AI는 비로소 쓸모 있는 비즈니스 인사이트를 내놓습니다.</p>
+
+        <div style="border-radius:10px;border:1.5px solid var(--rule);padding:14px 16px;margin-bottom:10px;">
+          <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:8px;">❌ 잘못된 질문</div>
+          <div style="font-size:15px;color:var(--muted);">"매출을 높여줘."</div>
+        </div>
+
+        <div style="border-radius:10px;border:1.5px solid var(--accent);padding:14px 16px;background:#fdf8f6;">
+          <div style="font-size:11px;color:var(--accent);letter-spacing:1px;margin-bottom:12px;font-weight:700;">✓ 구조화된 질문</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="font-size:11px;color:var(--accent);min-width:52px;font-weight:700;padding-top:1px;">WHO</span>
+              <span style="font-size:13px;color:var(--ink);">30대 여성 중 최근 3개월 내 재구매 없는 고객에게</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="font-size:11px;color:var(--accent);min-width:52px;font-weight:700;padding-top:1px;">WHAT</span>
+              <span style="font-size:13px;color:var(--ink);">구매율이 가장 높은 카테고리 상품을</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="font-size:11px;color:var(--accent);min-width:52px;font-weight:700;padding-top:1px;">WHEN</span>
+              <span style="font-size:13px;color:var(--ink);">앱 방문 직후 30분 이내에</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="font-size:11px;color:var(--accent);min-width:52px;font-weight:700;padding-top:1px;">COMPARE</span>
+              <span style="font-size:13px;color:var(--ink);">지난 캠페인 전환율과 비교해서</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <span style="font-size:11px;color:var(--accent);min-width:52px;font-weight:700;padding-top:1px;">HOW</span>
+              <span style="font-size:13px;color:var(--ink);">푸시 알림으로 개인화 제안해줘</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 9: Solution - Amplitude -->
+    <div class="card" data-index="8">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num">03</span></div>
+        <h2 class="card-title">결국, <span style="color:var(--accent);">우리에게<br>필요한 것</span>은</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <div style="background:var(--ink);border-radius:14px;padding:20px 18px;margin-bottom:14px;text-align:center;">
+          <div style="font-size:7px;letter-spacing:3px;color:rgba(255,255,255,0.4);margin-bottom:12px;text-transform:uppercase;">Two Insights → One Keyword</div>
+          <div style="font-size:15px;font-weight:800;color:#f0ede6;line-height:1.6;">데이터의 맥락을 읽고<br>판단하는 <span style="color:var(--accent);">오케스트레이터</span></div>
+        </div>
+
+        <p class="lead" style="border-bottom:none;padding-bottom:0;margin-bottom:8px;">우리는 매일 수많은 데이터를 마주하며 최고의 프로덕트를 만들기 위해 고민하고 있습니다.</p>
+        <p class="lead" style="border-bottom:none;padding-bottom:0;margin-bottom:8px;">강연에 다녀와 느낀 점은, 이제는 데이터 자체가 아니라 그 너머의 <strong>'맥락'</strong>을 읽는 눈이 필요한 때인 것 같습니다.</p>
+        <p class="lead" style="border-bottom:none;padding-bottom:0;margin-bottom:0;">데이터 사이의 맥락을 읽고 최적의 방향을 찾아내는 <strong>'오케스트레이터'</strong>의 시각으로, 고객에게 더 가치 있는 경험을 전할 수 있으면 좋겠습니다.</p>
+
+      </div>
+    </div>
+
+    <!-- CARD 10: 리뷰 -->
+    <div class="card" data-index="9">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num" style="font-size:11px;letter-spacing:2px;">REVIEW</span></div>
+        <h2 class="card-title">리포트가<br>도움이 되셨나요?</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead" style="border-bottom:none;padding-bottom:0;margin-bottom:16px;">익명으로 별점과 의견을 남겨주세요. 다음 리포트를 만드는 데 큰 힘이 됩니다.</p>
+        <button onclick="openReviewModal()" style="width:100%;padding:14px;background:var(--ink);color:#f0ede6;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:'Pretendard',sans-serif;cursor:pointer;margin-bottom:20px;">✏️ 리뷰 남기기</button>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:10px;">REVIEWS</div>
+        <div id="reviewList" style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:13px;color:var(--muted);text-align:center;padding:20px 0;">아직 작성된 리뷰가 없습니다</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /card-stack -->
+
+  <!-- 리뷰 모달 -->
+  <div id="reviewModal" style="display:none;position:fixed;inset:0;z-index:998;background:rgba(20,18,16,0.6);backdrop-filter:blur(4px);align-items:flex-end;justify-content:center;">
+    <div style="background:#fff;border-radius:24px 24px 0 0;padding:28px 24px 40px;width:100%;max-width:480px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div style="font-size:16px;font-weight:800;color:var(--ink);font-family:'Pretendard',sans-serif;">리뷰 작성</div>
+        <button onclick="closeReviewModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);">×</button>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:6px;">닉네임 *</div>
+        <input id="reviewNick" type="text" placeholder="익명의 독자" maxlength="20" style="width:100%;padding:12px 14px;box-sizing:border-box;border:1.5px solid var(--rule);border-radius:10px;font-size:14px;font-family:'Pretendard',sans-serif;outline:none;color:var(--ink);background:#fafafa;">
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">별점 *</div>
+        <div id="starRow" style="display:flex;gap:8px;">
+          <span class="star" data-v="1" onclick="setStar(1)" style="font-size:28px;cursor:pointer;opacity:0.25;color:var(--ink);">★</span>
+          <span class="star" data-v="2" onclick="setStar(2)" style="font-size:28px;cursor:pointer;opacity:0.25;color:var(--ink);">★</span>
+          <span class="star" data-v="3" onclick="setStar(3)" style="font-size:28px;cursor:pointer;opacity:0.25;color:var(--ink);">★</span>
+          <span class="star" data-v="4" onclick="setStar(4)" style="font-size:28px;cursor:pointer;opacity:0.25;color:var(--ink);">★</span>
+          <span class="star" data-v="5" onclick="setStar(5)" style="font-size:28px;cursor:pointer;opacity:0.25;color:var(--ink);">★</span>
+        </div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);margin-bottom:6px;">의견 <span style="font-weight:400;">(선택)</span></div>
+        <textarea id="reviewText" placeholder="자유롭게 남겨주세요" maxlength="200" rows="3" style="width:100%;padding:12px 14px;box-sizing:border-box;border:1.5px solid var(--rule);border-radius:10px;font-size:14px;font-family:'Pretendard',sans-serif;outline:none;color:var(--ink);background:#fafafa;resize:none;line-height:1.6;"></textarea>
+      </div>
+      <button onclick="submitReview()" style="width:100%;padding:14px;background:var(--ink);color:#f0ede6;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:'Pretendard',sans-serif;cursor:pointer;">등록하기</button>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" id="prevBtn" onclick="navigate(-1)" disabled>←</button>
+    <div class="nav-dots" id="navDots"></div>
+    <button class="nav-btn" id="nextBtn" onclick="navigate(1)">→</button>
+  </div>
+
+
+
+</div>
+
+<script>
+  const TOTAL = 10;
+  let current = 0;
+  let isAnimating = false;
+  let startX = 0;
+
+  const cards = document.querySelectorAll('.card');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsEl = document.getElementById('navDots');
+
+
+  // Build dots
+  for (let i = 0; i < TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  // Init: show first card in place
+  cards[0].classList.add('active');
+  cards[0].style.transform = 'translateX(0)';
+
+  function updateUI() {
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === TOTAL - 1;
+    if (current > 0) {}
+  }
+
+  function navigate(dir) {
+    if (isAnimating) return;
+    const next = current + dir;
+    if (next < 0 || next >= TOTAL) return;
+    isAnimating = true;
+
+    const outCard = cards[current];
+    const inCard = cards[next];
+
+    // Position incoming card off-screen
+    inCard.style.transition = 'none';
+    inCard.style.transform = dir > 0 ? 'translateX(100%)' : 'translateX(-100%)';
+    inCard.style.position = 'absolute';
+    inCard.style.top = '0';
+    inCard.style.left = '0';
+    inCard.style.width = '100%';
+    inCard.style.display = 'block';
+    inCard.style.zIndex = '2';
+
+    outCard.style.zIndex = '1';
+
+    // Force reflow
+    inCard.getBoundingClientRect();
+
+    // Animate both
+    inCard.style.transition = 'transform 0.42s cubic-bezier(0.4, 0, 0.2, 1)';
+    outCard.style.transition = 'transform 0.42s cubic-bezier(0.4, 0, 0.2, 1)';
+
+    inCard.style.transform = 'translateX(0)';
+    outCard.style.transform = dir > 0 ? 'translateX(-100%)' : 'translateX(100%)';
+
+    inCard.addEventListener('transitionend', function handler() {
+      inCard.removeEventListener('transitionend', handler);
+
+      // Clean up outCard
+      outCard.classList.remove('active');
+      outCard.style.cssText = '';
+      inCard.classList.add('active');
+      inCard.style.position = '';
+      inCard.style.top = '';
+      inCard.style.left = '';
+      inCard.style.width = '';
+      inCard.style.zIndex = '';
+      inCard.style.transform = '';
+      inCard.style.transition = '';
+
+      current = next;
+      updateUI();
+      isAnimating = false;
+    });
+  }
+
+  function goTo(idx) {
+    if (idx === current || isAnimating) return;
+    // Direct jump (e.g. from TOC or dots)
+    cards.forEach(c => { c.classList.remove('active'); c.style.cssText = ''; });
+    cards[idx].classList.add('active');
+    current = idx;
+    updateUI();
+  }
+
+  // Touch swipe
+  const stack = document.getElementById('cardStack');
+  stack.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  stack.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigate(-1);
+  });
+
+  updateUI();
+
+  // ── 리뷰 ──
+  let selectedStar = 0;
+
+  function setStar(v) {
+    selectedStar = v;
+    document.querySelectorAll('.star').forEach(s => {
+      const on = parseInt(s.dataset.v) <= v;
+      s.style.opacity = on ? '1' : '0.25';
+      s.style.color = on ? '#c8401a' : '#1c1c1c';
+    });
+  }
+
+  function openReviewModal() {
+    selectedStar = 0;
+    document.getElementById('reviewNick').value = '';
+    document.getElementById('reviewText').value = '';
+    document.querySelectorAll('.star').forEach(s => { s.style.opacity='0.25'; s.style.color='#1c1c1c'; });
+    document.getElementById('reviewModal').style.display = 'flex';
+  }
+
+  function closeReviewModal() {
+    document.getElementById('reviewModal').style.display = 'none';
+  }
+
+  async function submitReview() {
+    const nick = document.getElementById('reviewNick').value.trim() || '익명';
+    const text = document.getElementById('reviewText').value.trim();
+    if (!selectedStar) { alert('별점을 선택해주세요!'); return; }
+    const review = { nick, star: selectedStar, text, date: new Date().toLocaleDateString('ko-KR') };
+    let reviews = [];
+    try { const r = await window.storage.get('mg-reviews', true); if (r) reviews = JSON.parse(r.value); } catch(e) {}
+    reviews.unshift(review);
+    try { await window.storage.set('mg-reviews', JSON.stringify(reviews), true); } catch(e) {}
+    closeReviewModal();
+    renderReviews(reviews);
+  }
+
+  async function renderReviews(reviews) {
+    if (!reviews) {
+      try { const r = await window.storage.get('mg-reviews', true); reviews = r ? JSON.parse(r.value) : []; } catch(e) { reviews = []; }
+    }
+    const list = document.getElementById('reviewList');
+    if (!list) return;
+    if (!reviews.length) {
+      list.innerHTML = '<div style="font-size:13px;color:var(--muted);text-align:center;padding:20px 0;">아직 작성된 리뷰가 없습니다</div>';
+      return;
+    }
+    list.innerHTML = reviews.map(r => `
+      <div style="background:#f7f4ef;border-radius:12px;padding:14px 16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span style="font-size:13px;font-weight:700;color:var(--ink);font-family:'Pretendard',sans-serif;">${r.nick}</span>
+          <span style="font-size:11px;color:var(--muted);">${r.date}</span>
+        </div>
+        <div style="font-size:15px;margin-bottom:${r.text?'6px':'0'};">${'<span style="color:#c8401a;">★</span>'.repeat(r.star)}${'<span style="color:var(--rule);">★</span>'.repeat(5-r.star)}</div>
+        ${r.text ? `<div style="font-size:13px;color:#5a524a;line-height:1.7;font-family:'Pretendard',sans-serif;">${r.text}</div>` : ''}
+      </div>`).join('');
+  }
+
+  renderReviews();
+</script>
+</body>
+</html>
