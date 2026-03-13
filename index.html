@@ -90,6 +90,7 @@
       background: var(--white);
       opacity: 0.45;
       z-index: 0;
+      pointer-events: none;
     }
     .card-stack::before {
       content: '';
@@ -103,6 +104,7 @@
       background: var(--white);
       opacity: 0.2;
       z-index: -1;
+      pointer-events: none;
     }
 
     /* CARD */
@@ -386,7 +388,9 @@
       border-bottom: 1px solid var(--rule);
       cursor: pointer;
       transition: opacity 0.15s;
+      width: 100%;
     }
+    .contents-item > div:not(.contents-num):not(.contents-arrow) { flex: 1; min-width: 0; }
     .contents-item:last-child { border-bottom: none; }
     .contents-item:hover { opacity: 0.7; }
     .contents-num {
@@ -905,8 +909,34 @@
       </div>
     </div>
 
-    <!-- CARD 10: 리뷰 -->
-    <div class="card" data-index="9">
+    <!-- CARD 11: 참고 솔루션 -->
+    <div class="card" data-index="10">
+      <div class="card-header">
+        <div class="card-eyebrow"><span class="card-num" style="font-size:11px;letter-spacing:2px;">REFERENCE</span></div>
+        <h2 class="card-title" style="font-size:22px;">맥락 설계와 데이터 연결에<br>도움이 되는 솔루션</h2>
+      </div>
+      <div class="card-header-rule"></div>
+      <div class="card-body">
+        <p class="lead" style="border-bottom:none;padding-bottom:0;margin-bottom:28px;">앞서 언급된 전략들을 실행하는 데 참고가 될 만한 서비스입니다. 관심 있으신 분들은 가볍게 확인해 보셔도 좋을 것 같습니다.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+          <a href="https://amplitude.com/ko-kr" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 32px;background:#f7f4ef;border-radius:100px;text-decoration:none;border:1.5px solid var(--rule);">
+            <span style="font-size:14px;font-weight:700;color:var(--ink);font-family:'Pretendard',sans-serif;">Amplitude</span>
+            <span style="font-size:14px;color:var(--muted);">›</span>
+          </a>
+          <a href="https://www.braze.com/ko" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 32px;background:#f7f4ef;border-radius:100px;text-decoration:none;border:1.5px solid var(--rule);">
+            <span style="font-size:14px;font-weight:700;color:var(--ink);font-family:'Pretendard',sans-serif;">Braze</span>
+            <span style="font-size:14px;color:var(--muted);">›</span>
+          </a>
+          <a href="https://www.appsflyer.com/ko/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 32px;background:#f7f4ef;border-radius:100px;text-decoration:none;border:1.5px solid var(--rule);">
+            <span style="font-size:14px;font-weight:700;color:var(--ink);font-family:'Pretendard',sans-serif;">Appsflyer</span>
+            <span style="font-size:14px;color:var(--muted);">›</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 12: 리뷰 -->
+    <div class="card" data-index="11">
       <div class="card-header">
         <div class="card-eyebrow"><span class="card-num" style="font-size:11px;letter-spacing:2px;">REVIEW</span></div>
         <h2 class="card-title">리포트가<br>도움이 되셨나요?</h2>
@@ -964,7 +994,7 @@
 </div>
 
 <script>
-  const TOTAL = 10;
+  const TOTAL = 12;
   let current = 0;
   let isAnimating = false;
   let startX = 0;
